@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Contracts\Clock;
+namespace Zorachka\Contracts\Application\Clock;
 
 use DateTimeImmutable;
 
