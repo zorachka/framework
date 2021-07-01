@@ -1,4 +1,4 @@
-# This is my package Application
+# This is Zorachka
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/zorachka/framework.svg?style=flat-square)](https://packagist.org/packages/zorachka/framework)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/zorachka/framework/run-tests?label=tests)](https://github.com/zorachka/framework/actions?query=workflow%3ATests+branch%3Amaster)
@@ -7,7 +7,8 @@
 
 ---
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+Zorachka is a PHP framework. I'm not reinventing the wheel and just use stable PHP components. 
+It's more like a common interface for these components. 
 
 ## Installation
 
