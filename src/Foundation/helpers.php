@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Project\Common;
+namespace Zorachka\Foundation;
 
 use RuntimeException;
 
@@ -18,5 +18,5 @@ function env(string $name, ?string $default = null): string
         return $default;
     }
 
-    throw new RuntimeException('Undefined env ' . $name);
+    throw new RuntimeException('Undefined env variable: ' . $name);
 }

@@ -1,9 +1,9 @@
-# :package_description
+# This is my package Application
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/vendor_slug/package_slug.svg?style=flat-square)](https://packagist.org/packages/vendor_slug/package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/vendor_slug/package_slug/run-tests?label=tests)](https://github.com/vendor_slug/package_slug/actions?query=workflow%3ATests+branch%3Amaster)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/vendor_slug/package_slug/Check%20&%20fix%20styling?label=code%20style)](https://github.com/vendor_slug/package_slug/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
-[![Total Downloads](https://img.shields.io/packagist/dt/vendor_slug/package_slug.svg?style=flat-square)](https://packagist.org/packages/vendor_slug/package_slug)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/zorachka/framework.svg?style=flat-square)](https://packagist.org/packages/zorachka/framework)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/zorachka/framework/run-tests?label=tests)](https://github.com/zorachka/framework/actions?query=workflow%3ATests+branch%3Amaster)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/zorachka/framework/Check%20&%20fix%20styling?label=code%20style)](https://github.com/zorachka/framework/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/zorachka/framework.svg?style=flat-square)](https://packagist.org/packages/zorachka/framework)
 
 ---
 
@@ -14,7 +14,7 @@ This is where your description should go. Try and limit it to a paragraph or two
 You can install the package via composer:
 
 ```bash
-composer require vendor_slug/package_slug
+composer require zorachka/framework
 ```
 
 ## Usage
@@ -42,7 +42,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Siarhei Bautrukevich](https://github.com/bautrukevich)
 - [All Contributors](../../contributors)
 
 ## License
