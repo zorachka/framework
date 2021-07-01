@@ -6,12 +6,24 @@ namespace Zorachka\Foundation;
 
 use RuntimeException;
 
-function env(string $name, ?string $default = null): string
+/**
+ * @param string $name
+ * @param string|bool|null $default
+ * @return bool|string
+ */
+function env(string $name, $default = null)
 {
     $value = getenv($name);
 
     if ($value !== false) {
-        return $value;
+        switch (strtolower($value)) {
+            case 'true':
+                return true;
+            case 'false':
+                return false;
+            default:
+                return $value;
+        }
     }
 
     if ($default !== null) {
