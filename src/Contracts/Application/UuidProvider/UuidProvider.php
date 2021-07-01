@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Contracts\UuidProvider;
+namespace Zorachka\Contracts\Application\UuidProvider;
 
 interface UuidProvider
 {
