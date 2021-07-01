@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Contracts\ExceptionHandler;
+namespace Zorachka\Contracts\Application\ExceptionHandler;
 
 use Throwable;
 
