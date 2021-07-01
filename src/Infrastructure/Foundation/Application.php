@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Foundation;
+namespace Zorachka\Infrastructure\Foundation;
 
 use Laminas\Diactoros\ServerRequestFactory;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
@@ -11,7 +11,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class Application implements \Zorachka\Contracts\Application\Application
+final class Application implements \Zorachka\Contracts\Foundation\Application
 {
     private Router $router;
     private ContainerInterface $container;

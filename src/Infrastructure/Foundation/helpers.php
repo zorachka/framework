@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Zorachka\Foundation;
 
+use JsonException;
+use RuntimeException;
+
 /**
  * @param string $name
  * @param string|bool|null $default
  * @return bool|string
- * @throws \RuntimeException
+ * @throws RuntimeException
  */
 function env(string $name, $default = null)
 {
@@ -29,11 +32,11 @@ function env(string $name, $default = null)
         return $default;
     }
 
-    throw new \RuntimeException('Undefined env variable: ' . $name);
+    throw new RuntimeException('Undefined env variable: ' . $name);
 }
 
 /**
- * @throws \JsonException
+ * @throws JsonException
  */
 function json_encode($array): string
 {
@@ -41,7 +44,7 @@ function json_encode($array): string
 }
 
 /**
- * @throws \JsonException
+ * @throws JsonException
  */
 function json_decode(string $json): array
 {
