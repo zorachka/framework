@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Contracts\Templer;
+namespace Zorachka\Contracts\Application\Templer;
 
 interface Templer
 {
