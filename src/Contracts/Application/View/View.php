@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Contracts\View;
+namespace Zorachka\Contracts\Application\View;
 
 use Psr\Http\Message\ResponseInterface;
 
