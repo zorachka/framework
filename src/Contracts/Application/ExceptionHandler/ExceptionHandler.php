@@ -8,5 +8,7 @@ use Throwable;
 
 interface ExceptionHandler
 {
+    public function init(): void;
+
     public function capture(Throwable $exception): void;
 }
