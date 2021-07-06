@@ -8,14 +8,15 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Psr\Container\ContainerInterface;
 use Zorachka\Contracts\Application\Database\Transaction\Transaction;
-use Zorachka\Infrastructure\Database\Transaction\DBALTransaction;
-
-use function Zorachka\Foundation\env;
+use Zorachka\Infrastructure\Database\DoctrineDBAL\Transaction\DBALTransaction;
 
 final class ConfigProvider
 {
     public function __invoke(): array
     {
+        $defaultConfig = Config::defaults();
+        $defaults = $defaultConfig();
+
         return [
             Connection::class => function (ContainerInterface $container): Connection {
                 $config = $container->has('config') ? $container->get('config') : [];
@@ -32,18 +33,7 @@ final class ConfigProvider
                 return new DBALTransaction($connection);
             },
 
-            'config' => [
-                'dbal' => [
-                    'connection' => [
-                        'driver' => env('DB_DRIVER'),
-                        'host' => env('DB_HOST'),
-                        'user' => env('DB_USER'),
-                        'password' => env('DB_PASSWORD'),
-                        'dbname' => env('DB_NAME'),
-                        'charset' => 'utf-8'
-                    ],
-                ],
-            ]
+            'config' => $defaults['config'],
         ];
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Database\Transaction;
+namespace Zorachka\Infrastructure\Database\DoctrineDBAL\Transaction;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\ConnectionException;
