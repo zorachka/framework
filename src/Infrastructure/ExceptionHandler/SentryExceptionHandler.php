@@ -9,7 +9,6 @@ use Throwable;
 use Zorachka\Contracts\Application\ExceptionHandler\ExceptionHandler;
 
 use function Sentry\init;
-use function Zorachka\Application\Support\env;
 
 final class SentryExceptionHandler implements ExceptionHandler
 {
