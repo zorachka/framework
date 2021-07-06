@@ -13,13 +13,15 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class Application implements \Zorachka\Contracts\Foundation\Application
 {
-    private Router $router;
     private ContainerInterface $container;
+    private Router $router;
 
-    public function __construct(ContainerInterface $container, Router $router)
+    public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->router = $router;
+
+        /** @var Router $router */
+        $this->router = $this->container->get(Router::class);
     }
 
     public function run(?ServerRequestInterface $request = null): void
