@@ -4,50 +4,41 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Logger;
 
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
-use function Zorachka\Foundation\env;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 final class ConfigProvider
 {
     public function __invoke(): array
     {
+        $config = Config::defaults();
+        $defaults = $config();
+
         return [
             LoggerInterface::class => function (ContainerInterface $container) {
-                /**
-                 * @psalm-suppress MixedArrayAccess
-                 * @psalm-var array{
-                 *     debug:bool,
-                 *     stderr:bool,
-                 *     file:string
-                 * } $config
-                 */
-                $config = $container->get('config')['logger'];
+                $config = $container->has('config') ? $container->get('config') : [];
+                $logger = $config['logger'] ?? [];
 
-                $level = $config['debug'] ? Logger::DEBUG : Logger::INFO;
+                $level = $logger['debug'] ? Logger::DEBUG : Logger::INFO;
 
-                $log = new Logger(env('APP_NAME'));
+                $monolog = new Logger($logger['name']);
 
-                if ($config['stderr']) {
-                    $log->pushHandler(new StreamHandler('php://stderr', $level));
+                if ($logger['stderr']) {
+                    $monolog->pushHandler(new StreamHandler('php://stderr', $level));
                 }
 
-                if (!empty($config['file'])) {
-                    $log->pushHandler(new StreamHandler($config['file'], $level));
+                if (!empty($logger['file'])) {
+                    $rootPath = $container->get('config')['foundation']['root_path'];
+
+                    $monolog->pushHandler(new StreamHandler(\realpath($rootPath . $logger['file']), $level));
                 }
 
-                return $log;
+                return $monolog;
             },
 
-            'config' => [
-                'logger' => [
-                    'debug' => env('APP_DEBUG'),
-                    'file' => null,
-                    'stderr' => true,
-                ],
-            ],
+            'config' => $defaults['config'],
         ];
     }
 }
