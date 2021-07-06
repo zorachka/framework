@@ -28,7 +28,7 @@ final class TwigTempler implements Templer
      */
     public function render(string $name, array $context = []): string
     {
-        return $this->templer->render($name, $context);
+        return $this->templer->render($name . $this->getExtension(), $context);
     }
 
     /**
@@ -36,6 +36,6 @@ final class TwigTempler implements Templer
      */
     public function getExtension(): string
     {
-        return 'html.twig';
+        return '.html.twig';
     }
 }

@@ -13,12 +13,17 @@ final class ConfigProvider
 {
     public function __invoke(): array
     {
+        $defaultConfig = Config::defaults();
+        $defaults = $defaultConfig();
+
         return [
             Templer::class => static function (ContainerInterface $container) {
                 $environment = $container->get(Environment::class);
 
                 return new TwigTempler($environment);
             },
+
+            'config' => $defaults['config'],
         ];
     }
 }
