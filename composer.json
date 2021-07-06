@@ -27,7 +27,9 @@
         "ramsey/uuid": "^4.1",
         "sentry/sdk": "^3.1",
         "swiftmailer/swiftmailer": "^6.2",
+        "symfony/console": "^5.3",
         "twig/twig": "^3.3",
+        "vlucas/phpdotenv": "^5.3",
         "webmozart/assert": "^1.10"
     },
     "require-dev": {
@@ -38,7 +40,7 @@
     },
     "autoload": {
         "files": [
-            "src/Foundation/helpers.php"
+            "src/Application/Support/helpers.php"
         ],
         "psr-4": {
             "Zorachka\\": "src/"
