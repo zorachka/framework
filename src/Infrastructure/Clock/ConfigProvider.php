@@ -8,12 +8,13 @@ use DateTimeZone;
 use Psr\Container\ContainerInterface;
 use Zorachka\Contracts\Application\Clock\Clock;
 
-use function Zorachka\Foundation\env;
-
 final class ConfigProvider
 {
     public function __invoke(): array
     {
+        $config = Config::defaults();
+        $defaults = $config();
+
         return [
             Clock::class => static function (ContainerInterface $container) {
                 $config = $container->has('config') ? $container->get('config') : [];
@@ -21,12 +22,7 @@ final class ConfigProvider
 
                 return new TimeZoneAwareClock(new DateTimeZone($clock['timezone']));
             },
-
-            'config' => [
-                'clock' => [
-                    'timezone' => env('APP_TIMEZONE')
-                ],
-            ],
+            'config' => $defaults['config'],
         ];
     }
 }
