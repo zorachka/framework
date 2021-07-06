@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Database\Migrations\Schema;
 
+use InvalidArgumentException;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\Provider\SchemaProvider;
-use InvalidArgumentException;
 use Webmozart\Assert\Assert;
 
 final class AggregateSchemaProvider implements SchemaProvider

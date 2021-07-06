@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Database\Migrations;
 
+use Psr\Container\ContainerInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\Migrations;
 use Doctrine\Migrations\Configuration\Configuration;
 use Doctrine\Migrations\DependencyFactory;
 use Doctrine\Migrations\Tools\Console\Command;
-use Psr\Container\ContainerInterface;
 use Doctrine\Migrations\Provider\SchemaProvider;
 use Zorachka\Infrastructure\Database\Migrations\Schema\AggregateSchemaProvider;
 
@@ -17,22 +17,33 @@ final class ConfigProvider
 {
     public function __invoke(): array
     {
+        $defaultConfig = Config::defaults();
+        $defaults = $defaultConfig();
+
         return [
             SchemaProvider::class => static function (ContainerInterface $container) {
-                $config = $container->get('config')['migrations'];
+                $config = $container->has('config') ? $container->get('config') : [];
+                $migrations = $config['migrations'] ?? [];
 
-                return new AggregateSchemaProvider($config['schemas']);
+                return new AggregateSchemaProvider($migrations['schemas']);
             },
             DependencyFactory::class => static function (ContainerInterface $container) {
-                $config = $container->get('config')['migrations'];
+                $config = $container->has('config') ? $container->get('config') : [];
+                $migrations = $config['migrations'] ?? [];
+
+                $foundation = $config['foundation'] ?? [];
 
                 $configuration = new Configuration();
-                $configuration->addMigrationsDirectory('DoctrineMigrations', $config['path']);
+                $migrationsDirectory = \realpath($foundation['root_path'] . '/' . $migrations['path']);
+                $configuration->addMigrationsDirectory(
+                    'DoctrineMigrations',
+                    $migrationsDirectory,
+                );
                 $configuration->setAllOrNothing(true);
                 $configuration->setCheckDatabasePlatform(false);
 
                 $storageConfiguration = new Migrations\Metadata\Storage\TableMetadataStorageConfiguration();
-                $storageConfiguration->setTableName('migrations');
+                $storageConfiguration->setTableName($migrations['table_name']);
 
                 $configuration->setMetadataStorageConfiguration($storageConfiguration);
 
@@ -89,27 +100,7 @@ final class ConfigProvider
 //        $factory = $container->get(DependencyFactory::class);
 //        return new Command\GenerateCommand($factory);
 //    },
-
-            'config' => [
-                'migrations' => [
-                    'path' => __DIR__ . '/../../migrations',
-                    'schemas' => [
-                        // list all the aggregate class names of your application, e.g.
-                    ],
-                ],
-                'console' => [
-                    'commands' => [
-                        Migrations\Tools\Console\Command\ExecuteCommand::class,
-                        Migrations\Tools\Console\Command\MigrateCommand::class,
-                        Migrations\Tools\Console\Command\LatestCommand::class,
-                        Migrations\Tools\Console\Command\ListCommand::class,
-                        Migrations\Tools\Console\Command\StatusCommand::class,
-                        Migrations\Tools\Console\Command\UpToDateCommand::class,
-                        Migrations\Tools\Console\Command\DiffCommand::class,
-//                Migrations\Tools\Console\Command\GenerateCommand::class,
-                    ],
-                ],
-            ]
+            'config' => $defaults['config'],
         ];
     }
 }
