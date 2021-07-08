@@ -30,9 +30,7 @@ final class ConfigProvider
                 }
 
                 if (!empty($logger['file'])) {
-                    $rootPath = $container->get('config')['foundation']['root_path'];
-
-                    $monolog->pushHandler(new StreamHandler(\realpath($rootPath . $logger['file']), $level));
+                    $monolog->pushHandler(new StreamHandler($logger['file'], $level));
                 }
 
                 return $monolog;

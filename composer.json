@@ -22,15 +22,20 @@
         "finesse/swiftmailer-defaults-plugin": "^2.0",
         "laminas/laminas-diactoros": "^2.6",
         "laminas/laminas-httphandlerrunner": "^1.4",
+        "league/event": "^3.0",
         "league/route": "^5.0",
+        "league/tactician": "^1.1",
+        "league/tactician-doctrine": "^1.1",
         "monolog/monolog": "^2.2",
+        "onliner/command-bus": "^0.2.0",
         "ramsey/uuid": "^4.1",
         "sentry/sdk": "^3.1",
         "swiftmailer/swiftmailer": "^6.2",
         "symfony/console": "^5.3",
         "twig/twig": "^3.3",
         "vlucas/phpdotenv": "^5.3",
-        "webmozart/assert": "^1.10"
+        "webmozart/assert": "^1.10",
+        "ext-pcntl": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",
