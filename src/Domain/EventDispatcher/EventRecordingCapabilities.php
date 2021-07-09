@@ -17,7 +17,7 @@ trait EventRecordingCapabilities
      * @param object $event
      * @return void
      */
-    public function registerThat(object $event): void
+    private function registerThat(object $event): void
     {
         $this->events[] = $event;
     }
