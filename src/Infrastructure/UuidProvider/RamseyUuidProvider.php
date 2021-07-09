@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Zorachka\Infrastructure\UuidProvider;
 
 use Ramsey\Uuid\Uuid;
-use Zorachka\Contracts\Application\UuidProvider\UuidProvider;
+use Zorachka\Application\UuidProvider\UuidProvider;
 
 final class RamseyUuidProvider implements UuidProvider
 {

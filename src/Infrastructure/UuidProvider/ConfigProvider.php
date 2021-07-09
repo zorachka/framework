@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\UuidProvider;
 
-use Zorachka\Contracts\Application\UuidProvider\UuidProvider;
+use Zorachka\Application\UuidProvider\UuidProvider;
 
 final class ConfigProvider
 {
