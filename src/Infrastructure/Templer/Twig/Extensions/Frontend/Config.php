@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Templer\Twig\Extensions\Frontend;
 
-use function Zorachka\Application\Support\env;
+use Zorachka\Application\Support\Env;
 
 final class Config
 {
@@ -27,7 +27,7 @@ final class Config
     {
         $self = new self();
         $self->config = [
-            'url' => env('FRONTEND_URL')
+            'url' => Env::get('FRONTEND_URL')
         ];
 
         return $self;

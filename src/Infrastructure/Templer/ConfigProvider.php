@@ -6,7 +6,7 @@ namespace Zorachka\Infrastructure\Templer;
 
 use Psr\Container\ContainerInterface;
 use Twig\Environment;
-use Zorachka\Contracts\Application\Templer\Templer;
+use Zorachka\Application\Templer\Templer;
 use Zorachka\Infrastructure\Templer\Twig\TwigTempler;
 
 final class ConfigProvider

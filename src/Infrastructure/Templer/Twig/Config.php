@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Templer\Twig;
 
-use Twig\Extension\ExtensionInterface;
-
 final class Config
 {
     private array $config;

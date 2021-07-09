@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Zorachka\Infrastructure\Templer\Twig;
 
 use Twig\Environment;
-use Zorachka\Contracts\Application\Templer\Templer;
+use Zorachka\Application\Templer\Templer;
 
 final class TwigTempler implements Templer
 {
