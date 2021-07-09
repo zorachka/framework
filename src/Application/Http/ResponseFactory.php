@@ -6,6 +6,7 @@ namespace Zorachka\Application\Http;
 
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 
 interface ResponseFactory
@@ -67,4 +68,17 @@ interface ResponseFactory
      * @param array $headers Headers for the response, if any.
      */
     public function empty(int $status = 204, array $headers = []): ResponseInterface;
+
+    /**
+     * Create an HTML response.
+     *
+     * Produces an HTML response with a Content-Type of text/html and a default
+     * status of 200.
+     *
+     * @param string|StreamInterface $html HTML or stream for the message body.
+     * @param int $status Integer status code for the response; 200 by default.
+     * @param array $headers Array of headers to use at initialization.
+     * @throws InvalidArgumentException if $html is neither a string or stream.
+     */
+    public function html($html, int $status = 200, array $headers = []): ResponseInterface;
 }
