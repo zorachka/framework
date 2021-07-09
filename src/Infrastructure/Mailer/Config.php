@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Mailer;
 
-use function Zorachka\Application\Support\env;
+use Zorachka\Application\Support\Env;
 
 final class Config
 {
@@ -27,13 +27,13 @@ final class Config
     {
         $self = new self();
         $self->config = [
-            'host' => env('MAILER_HOST', ''),
-            'port' => env('MAILER_PORT', ''),
-            'user' => env('MAILER_USER', ''),
-            'password' => env('MAILER_PASSWORD', ''),
-            'encryption' => env('MAILER_ENCRYPTION', ''),
-            'from_name' => env('MAILER_FROM_NAME', ''),
-            'from_email' => env('MAILER_FROM_EMAIL', ''),
+            'host' => Env::get('MAILER_HOST'),
+            'port' => Env::get('MAILER_PORT'),
+            'user' => Env::get('MAILER_USER'),
+            'password' => Env::get('MAILER_PASSWORD'),
+            'encryption' => Env::get('MAILER_ENCRYPTION'),
+            'from_name' => Env::get('MAILER_FROM_NAME'),
+            'from_email' => Env::get('MAILER_FROM_EMAIL'),
         ];
 
         return $self;
