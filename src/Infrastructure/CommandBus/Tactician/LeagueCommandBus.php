@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\CommandBus\Tactician;
 
-use Zorachka\Contracts\Application\CommandBus\CommandBus;
 use League\Tactician\CommandBus as TacticianCommandBus;
+use Zorachka\Application\CommandBus\CommandBus;
 
 final class LeagueCommandBus implements CommandBus
 {
