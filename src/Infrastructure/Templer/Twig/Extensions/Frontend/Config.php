@@ -27,7 +27,7 @@ final class Config
     {
         $self = new self();
         $self->config = [
-            'url' => Env::get('FRONTEND_URL')
+            'url' => Env::get('APP_URL')
         ];
 
         return $self;
