@@ -24,7 +24,7 @@ final class ConfigProvider
         $defaults = $defaultConfig();
 
         return [
-            SerializerFactory::class => static function (ContainerInterface $container) {
+            Serializer::class => static function (ContainerInterface $container) {
                 $config = $container->has('config') ? $container->get('config') : [];
                 $serializer = $config['command_bus']['serializer'];
                 $type = $serializer['type'] ?? SerializerFactory::DEFAULT;
