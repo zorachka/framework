@@ -14,11 +14,13 @@ It's more like a common interface for these components. It's a bridge from infra
 
 ## Installation
 
-You can install the package via composer:
+If you want to use it separately (why not) you can install the package via composer:
 
 ```bash
 composer require zorachka/framework
 ```
+
+But it's better to use application skeleton (coming soon).
 
 ## Usage
 
