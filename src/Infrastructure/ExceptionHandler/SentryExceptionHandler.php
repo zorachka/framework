@@ -6,7 +6,7 @@ namespace Zorachka\Infrastructure\ExceptionHandler;
 
 use Sentry\State\HubInterface;
 use Throwable;
-use Zorachka\Contracts\Application\ExceptionHandler\ExceptionHandler;
+use Zorachka\Application\ExceptionHandler\ExceptionHandler;
 
 use function Sentry\init;
 

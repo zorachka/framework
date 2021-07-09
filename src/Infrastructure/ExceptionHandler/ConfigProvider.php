@@ -6,7 +6,7 @@ namespace Zorachka\Infrastructure\ExceptionHandler;
 
 use Psr\Container\ContainerInterface;
 use Sentry\SentrySdk;
-use Zorachka\Contracts\Application\ExceptionHandler\ExceptionHandler;
+use Zorachka\Application\ExceptionHandler\ExceptionHandler;
 
 final class ConfigProvider
 {

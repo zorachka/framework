@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\ExceptionHandler;
 
-use function Zorachka\Application\Support\env;
+use Zorachka\Application\Support\Env;
 
 final class Config
 {
@@ -27,8 +27,8 @@ final class Config
     {
         $self = new self();
         $self->config = [
-            'dsn' => env('SENTRY_DSN'),
-            'is_enabled' => env('SENTRY_DSN') !== '',
+            'dsn' => Env::get('SENTRY_DSN'),
+            'is_enabled' => Env::get('SENTRY_DSN') !== '',
         ];
 
         return $self;
