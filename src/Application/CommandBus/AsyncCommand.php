@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Contracts\Application\CommandBus;
+namespace Zorachka\Application\CommandBus;
 
 interface AsyncCommand
 {

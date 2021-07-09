@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Contracts\Application\Database\Transaction;
+namespace Zorachka\Application\Database\Transaction;
 
 interface Transaction
 {
