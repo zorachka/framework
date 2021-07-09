@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Foundation;
+namespace Zorachka\Infrastructure\Http;
 
 final class Config
 {

@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Foundation;
+namespace Zorachka\Infrastructure\Http;
 
 use Laminas\Diactoros\ServerRequestFactory;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 use League\Route\Router;
+use Mezzio\Helper\BodyParams\BodyParamsMiddleware;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class Application implements \Zorachka\Contracts\Foundation\Application
+final class HttpApplication implements Application
 {
     private ContainerInterface $container;
     private Router $router;
@@ -22,6 +23,9 @@ final class Application implements \Zorachka\Contracts\Foundation\Application
 
         /** @var Router $router */
         $this->router = $this->container->get(Router::class);
+        $this->router->middlewares([
+            new BodyParamsMiddleware(),
+        ]);
     }
 
     public function run(?ServerRequestInterface $request = null): void
