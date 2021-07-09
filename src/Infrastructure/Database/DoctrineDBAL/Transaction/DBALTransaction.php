@@ -7,7 +7,7 @@ namespace Zorachka\Infrastructure\Database\DoctrineDBAL\Transaction;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\ConnectionException;
 use Doctrine\DBAL\Exception;
-use Zorachka\Contracts\Application\Database\Transaction\Transaction;
+use Zorachka\Application\Database\Transaction\Transaction;
 
 final class DBALTransaction implements Transaction
 {

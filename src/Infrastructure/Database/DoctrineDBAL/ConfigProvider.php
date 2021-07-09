@@ -7,7 +7,7 @@ namespace Zorachka\Infrastructure\Database\DoctrineDBAL;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Psr\Container\ContainerInterface;
-use Zorachka\Contracts\Application\Database\Transaction\Transaction;
+use Zorachka\Application\Database\Transaction\Transaction;
 use Zorachka\Infrastructure\Database\DoctrineDBAL\Transaction\DBALTransaction;
 
 final class ConfigProvider

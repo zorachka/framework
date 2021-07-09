@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Database\DoctrineDBAL;
 
-use function Zorachka\Application\Support\env;
+use Zorachka\Application\Support\Env;
 
 final class Config
 {
@@ -28,11 +28,11 @@ final class Config
         $self = new self();
         $self->config = [
             'connection' => [
-                'driver' => env('DB_DRIVER'),
-                'host' => env('DB_HOST'),
-                'user' => env('DB_USER'),
-                'password' => env('DB_PASSWORD'),
-                'dbname' => env('DB_NAME'),
+                'driver' => Env::get('DB_DRIVER'),
+                'host' => Env::get('DB_HOST'),
+                'user' => Env::get('DB_USER'),
+                'password' => Env::get('DB_PASSWORD'),
+                'dbname' => Env::get('DB_NAME'),
                 'charset' => 'utf-8'
             ],
         ];
