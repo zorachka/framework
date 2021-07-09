@@ -7,39 +7,41 @@ namespace Zorachka\Infrastructure\CommandBus\Onliner\Middleware;
 use Psr\Log\LoggerInterface;
 use Throwable;
 use Exception;
-use Doctrine\DBAL\Connection;
 use Onliner\CommandBus\Context;
 use Onliner\CommandBus\Middleware;
+use Zorachka\Application\Database\Transaction\Transaction;
 
 final class TransactionMiddleware implements Middleware
 {
-    private Connection $connection;
     private LoggerInterface $logger;
+    private Transaction $transaction;
 
-    public function __construct(Connection $connection, LoggerInterface $logger)
+    public function __construct(Transaction $transaction, LoggerInterface $logger)
     {
-        $this->connection = $connection;
         $this->logger = $logger;
+        $this->transaction = $transaction;
     }
 
     /**
      * @inheritDoc
+     * @throws Exception
+     * @throws Throwable
      */
     public function call(object $message, Context $context, callable $next): void
     {
-        $this->connection->beginTransaction();
+        $this->transaction->begin();
 
         try {
             $next($message, $context);
 
-            $this->connection->commit();
+            $this->transaction->commit();
             $this->logger->debug('Transaction completed');
         } catch (Exception $exception) {
-            $this->connection->rollBack();
+            $this->transaction->rollBack();
 
             throw $exception;
         } catch (Throwable $exception) {
-            $this->connection->rollBack();
+            $this->transaction->rollBack();
 
             throw $exception;
         }
