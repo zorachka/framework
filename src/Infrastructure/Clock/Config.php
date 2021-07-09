@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Clock;
 
+use DateTimeZone;
+use Webmozart\Assert\Assert;
+
 final class Config
 {
     private array $config;
@@ -33,6 +36,7 @@ final class Config
 
     public function timezone(string $timezone): self
     {
+        Assert::inArray($timezone, DateTimeZone::listIdentifiers(DateTimeZone::ALL));
         $new = clone $this;
         $new->config['timezone'] = $timezone;
 

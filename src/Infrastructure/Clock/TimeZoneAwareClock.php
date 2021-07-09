@@ -7,7 +7,7 @@ namespace Zorachka\Infrastructure\Clock;
 use DateTimeImmutable;
 use DateTimeZone;
 use Exception;
-use Zorachka\Contracts\Application\Clock\Clock;
+use Zorachka\Application\Clock\Clock;
 
 final class TimeZoneAwareClock implements Clock
 {

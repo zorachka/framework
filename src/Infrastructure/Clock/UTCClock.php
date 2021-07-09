@@ -6,7 +6,7 @@ namespace Zorachka\Infrastructure\Clock;
 
 use DateTimeImmutable;
 use DateTimeZone;
-use Zorachka\Contracts\Application\Clock\Clock;
+use Zorachka\Application\Clock\Clock;
 
 final class UTCClock implements Clock
 {

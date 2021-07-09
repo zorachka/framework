@@ -6,7 +6,7 @@ namespace Zorachka\Infrastructure\Clock;
 
 use DateTimeZone;
 use Psr\Container\ContainerInterface;
-use Zorachka\Contracts\Application\Clock\Clock;
+use Zorachka\Application\Clock\Clock;
 
 final class ConfigProvider
 {
