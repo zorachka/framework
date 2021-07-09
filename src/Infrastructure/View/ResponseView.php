@@ -6,8 +6,8 @@ namespace Zorachka\Infrastructure\View;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
-use Zorachka\Contracts\Application\Templer\Templer;
-use Zorachka\Contracts\Application\View\View;
+use Zorachka\Application\Templer\Templer;
+use Zorachka\Application\View\View;
 
 final class ResponseView implements View
 {
