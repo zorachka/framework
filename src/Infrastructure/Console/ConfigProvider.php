@@ -14,7 +14,7 @@ final class ConfigProvider
         $defaults = $defaultConfig();
 
         return [
-            \Zorachka\Contracts\Console\Application::class => static function (ContainerInterface $container) {
+            Application::class => static function (ContainerInterface $container) {
                 $config = $container->has('config') ? $container->get('config') : [];
                 $console = $config['console'] ?? [];
 
@@ -26,7 +26,7 @@ final class ConfigProvider
                     $commands[] = $container->get($commandClassName);
                 }
 
-                return new Application($appName, $catchExceptions, $commands);
+                return new ConsoleApplication($appName, $catchExceptions, $commands);
             },
             'config' => $defaults['config'],
         ];
