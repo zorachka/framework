@@ -12,18 +12,12 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 
 final class ReleaseRecordedEventsMiddleware implements Middleware
 {
-    private EventDispatcherInterface $dispatcher;
     private BufferedEventDispatcher $bufferedEventDispatcher;
-    private Connection $connection;
 
     public function __construct(
-        EventDispatcherInterface $dispatcher,
-        BufferedEventDispatcher $bufferedEventDispatcher,
-        Connection $connection
+        BufferedEventDispatcher $bufferedEventDispatcher
     ) {
-        $this->dispatcher = $dispatcher;
         $this->bufferedEventDispatcher = $bufferedEventDispatcher;
-        $this->connection = $connection;
     }
 
     /**
