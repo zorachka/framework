@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Logger;
 
-use function Zorachka\Application\Support\env;
+use Zorachka\Application\Support\Env;
 
 final class Config
 {
@@ -27,7 +27,7 @@ final class Config
     {
         $self = new self();
         $self->config = [
-            'name' => env('APP_NAME', ''),
+            'name' => Env::get('APP_NAME', ''),
             'debug' => false,
             'file' => null,
             'stderr' => true,
