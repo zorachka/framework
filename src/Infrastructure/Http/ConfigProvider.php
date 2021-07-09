@@ -10,7 +10,6 @@ use League\Route\Strategy\StrategyInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Zorachka\Application\Http\ResponseFactory;
-use Zorachka\Infrastructure\Foundation\HttpApplication;
 
 final class ConfigProvider
 {
