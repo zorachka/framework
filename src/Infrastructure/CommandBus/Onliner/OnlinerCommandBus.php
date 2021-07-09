@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Zorachka\Infrastructure\CommandBus\Onliner;
 
 use Onliner\CommandBus\Dispatcher;
-use Zorachka\Contracts\Application\CommandBus\CommandBus;
+use Zorachka\Application\CommandBus\CommandBus;
 
 final class OnlinerCommandBus implements CommandBus
 {

@@ -7,10 +7,10 @@ namespace Zorachka\Infrastructure\CommandBus\Onliner;
 use Onliner\CommandBus\Middleware\LoggerMiddleware;
 use Onliner\CommandBus\Remote\AMQP\AMQPConsumer;
 use Onliner\CommandBus\Remote\AMQP\Queue;
+use Onliner\CommandBus\Remote\RemoteExtension;
 use Onliner\CommandBus\Retry\Policy\ThrowPolicy;
+use Zorachka\Application\CommandBus\AsyncCommand;
 use Zorachka\Infrastructure\CommandBus\Onliner\Console\ConsumeCommand;
-use Zorachka\Infrastructure\CommandBus\Onliner\Middleware\ReleaseRecordedEventsMiddleware;
-use Zorachka\Infrastructure\CommandBus\Onliner\Middleware\TransactionMiddleware;
 
 final class Config
 {
@@ -82,11 +82,10 @@ final class Config
             ],
             'extensions' => [
                 // CustomExtension::class,
+                RemoteExtension::class,
             ],
             'middlewares' => [
                 LoggerMiddleware::class,
-                TransactionMiddleware::class,
-                ReleaseRecordedEventsMiddleware::class,
             ],
         ];
 
@@ -97,6 +96,11 @@ final class Config
     {
         $new = clone $this;
         $new->config['handlers_map'][$commandClassName] = $handlerClassName;
+
+        $isAsyncCommand = new $commandClassName instanceof AsyncCommand;
+        if (!$isAsyncCommand) {
+            $new->config['remote']['local'][] = $commandClassName;
+        }
 
         return $new;
     }
@@ -118,18 +122,18 @@ final class Config
         return $new;
     }
 
-    public function addLocalCommand(string $commandClassName): self
-    {
-        $new = clone $this;
-        $new->config['remote']['local'][] = $commandClassName;
-
-        return $new;
-    }
-
     public function addRetryPolicy(string $commandClassName, string $policyClassName): self
     {
         $new = clone $this;
         $new->config['retries']['policies'][$commandClassName] = $policyClassName;
+
+        return $new;
+    }
+
+    public function defaultPolicy(string $policyClassName): self
+    {
+        $new = clone $this;
+        $new->config['retries']['default'] = $policyClassName;
 
         return $new;
     }

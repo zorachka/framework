@@ -11,7 +11,7 @@ use Onliner\CommandBus\Remote\Serializer;
 use Onliner\CommandBus\Remote\Transport;
 use Onliner\CommandBus\Retry\RetryExtension;
 use Psr\Container\ContainerInterface;
-use Zorachka\Contracts\Application\CommandBus\CommandBus;
+use Zorachka\Application\CommandBus\CommandBus;
 use Zorachka\Infrastructure\CommandBus\Onliner\Console\ConsumeCommand;
 use Zorachka\Infrastructure\CommandBus\Onliner\Factory\SerializerFactory;
 use Zorachka\Infrastructure\CommandBus\Onliner\Factory\TransportFactory;

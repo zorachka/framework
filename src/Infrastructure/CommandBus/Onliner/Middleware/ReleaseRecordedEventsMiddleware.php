@@ -4,20 +4,26 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\CommandBus\Onliner\Middleware;
 
+use Doctrine\DBAL\Connection;
+use League\Event\BufferedEventDispatcher;
 use Onliner\CommandBus\Context;
 use Onliner\CommandBus\Middleware;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use Zorachka\Infrastructure\EventDispatcher\Recorder;
 
 final class ReleaseRecordedEventsMiddleware implements Middleware
 {
     private EventDispatcherInterface $dispatcher;
-    private Recorder $recorder;
+    private BufferedEventDispatcher $bufferedEventDispatcher;
+    private Connection $connection;
 
-    public function __construct(EventDispatcherInterface $dispatcher, Recorder $recorder)
-    {
+    public function __construct(
+        EventDispatcherInterface $dispatcher,
+        BufferedEventDispatcher $bufferedEventDispatcher,
+        Connection $connection
+    ) {
         $this->dispatcher = $dispatcher;
-        $this->recorder = $recorder;
+        $this->bufferedEventDispatcher = $bufferedEventDispatcher;
+        $this->connection = $connection;
     }
 
     /**
@@ -28,15 +34,10 @@ final class ReleaseRecordedEventsMiddleware implements Middleware
         try {
             $next($message, $context);
         } catch (\Exception $exception) {
-            $this->recorder->releaseEvents();
-
+            // Erase events
             throw $exception;
         }
 
-        $recordedEvents = $this->recorder->releaseEvents();
-
-        foreach ($recordedEvents as $event) {
-            $this->dispatcher->dispatch($event);
-        }
+        $this->bufferedEventDispatcher->dispatchBufferedEvents();
     }
 }
