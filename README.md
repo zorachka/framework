@@ -7,8 +7,10 @@
 
 ---
 
-Zorachka is a PHP framework. I'm not reinventing the wheel and just use stable PHP components. 
-It's more like a common interface for these components. 
+Attention! Project is under heavy development.
+
+Zorachka is not another PHP framework. I'm not reinventing the wheel and just use stable PHP components. 
+It's more like a common interface for these components. It's a bridge from infrastructure complexity and you. 
 
 ## Installation
 
