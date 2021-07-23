@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Domain\DateTimeImmutable;
+namespace Zorachka\Domain\DateTime;
 
-use DateTimeImmutable;
 use DateTimeZone;
+use DateTimeImmutable;
 use Webmozart\Assert\Assert;
 
 final class TimeZoneAwareDateTime
