@@ -17,7 +17,7 @@ final class TimeZoneAwareDateTime
      * @param string $date
      * @return DateTimeImmutable
      */
-    public static function createDateTimeImmutable(string $date): DateTimeImmutable
+    public static function fromString(string $date): DateTimeImmutable
     {
         Assert::notEmpty($date);
 
@@ -35,7 +35,7 @@ final class TimeZoneAwareDateTime
      * @param DateTimeImmutable $date
      * @return string
      */
-    public static function formatToString(DateTimeImmutable $date): string
+    public static function asString(DateTimeImmutable $date): string
     {
         return $date->format(self::FORMAT);
     }
