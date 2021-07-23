@@ -30,6 +30,7 @@ final class ClearCacheCommand extends Command
                 \dirname(__DIR__) . '/var/cache/twig',
             ];
 
+            // TODO: Clean folders
             \var_dump($folders);
 
             $output->writeln('<info>Cache was successfully cleared.</info>');
