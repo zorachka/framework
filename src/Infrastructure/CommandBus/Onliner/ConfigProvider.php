@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\CommandBus\Onliner;
 
+use Psr\Container\ContainerInterface;
 use Onliner\CommandBus\Builder;
 use Onliner\CommandBus\Dispatcher;
 use Onliner\CommandBus\Remote\RemoteExtension;
 use Onliner\CommandBus\Remote\Serializer;
 use Onliner\CommandBus\Remote\Transport;
 use Onliner\CommandBus\Retry\RetryExtension;
-use Psr\Container\ContainerInterface;
 use Zorachka\Application\CommandBus\CommandBus;
 use Zorachka\Infrastructure\CommandBus\Onliner\Console\ConsumeCommand;
 use Zorachka\Infrastructure\CommandBus\Onliner\Factory\SerializerFactory;
@@ -20,7 +20,7 @@ final class ConfigProvider
 {
     public function __invoke(): array
     {
-        $defaultConfig = Config::defaults();
+        $defaultConfig = Config::withDefaults();
         $defaults = $defaultConfig();
 
         return [

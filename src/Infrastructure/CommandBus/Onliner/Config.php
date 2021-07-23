@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\CommandBus\Onliner;
 
+use ReflectionClass;
 use Onliner\CommandBus\Middleware\LoggerMiddleware;
 use Onliner\CommandBus\Remote\AMQP\AMQPConsumer;
 use Onliner\CommandBus\Remote\AMQP\Queue;
 use Onliner\CommandBus\Remote\RemoteExtension;
 use Onliner\CommandBus\Retry\Policy\ThrowPolicy;
-use ReflectionClass;
 use Zorachka\Application\CommandBus\AsyncCommand;
 use Zorachka\Infrastructure\CommandBus\Onliner\Console\ConsumeCommand;
 
@@ -35,7 +35,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config =  [
@@ -111,7 +111,7 @@ final class Config
         return $new;
     }
 
-    public function addExtension(string $extensionClassName): self
+    public function withExtension(string $extensionClassName): self
     {
         $new = clone $this;
         $new->config['extensions'][] = $extensionClassName;
@@ -119,7 +119,7 @@ final class Config
         return $new;
     }
 
-    public function transport(string $dsn, array $options): self
+    public function withTransport(string $dsn, array $options): self
     {
         $new = clone $this;
         $new->config['remote']['transport']['dsn'] = $dsn;
@@ -128,7 +128,7 @@ final class Config
         return $new;
     }
 
-    public function addRetryPolicy(string $commandClassName, string $policyClassName): self
+    public function withRetryPolicy(string $commandClassName, string $policyClassName): self
     {
         $new = clone $this;
         $new->config['retries']['policies'][$commandClassName] = $policyClassName;
@@ -136,7 +136,7 @@ final class Config
         return $new;
     }
 
-    public function defaultPolicy(string $policyClassName): self
+    public function withDefaultPolicy(string $policyClassName): self
     {
         $new = clone $this;
         $new->config['retries']['default'] = $policyClassName;
@@ -144,7 +144,7 @@ final class Config
         return $new;
     }
 
-    public function addMiddleware(string $middlewareClassName): self
+    public function withMiddleware(string $middlewareClassName): self
     {
         $new = clone $this;
         $new->config['middlewares'][] = $middlewareClassName;
