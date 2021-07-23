@@ -21,7 +21,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [
@@ -33,7 +33,7 @@ final class Config
         return $self;
     }
 
-    public function setupFetcherFor(string $queryClassName, string $fetcherClassName): self
+    public function withFetcherFor(string $queryClassName, string $fetcherClassName): self
     {
         $self = new self();
         $self->config['fetchers_map'][$queryClassName] = $fetcherClassName;
