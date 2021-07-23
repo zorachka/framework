@@ -34,7 +34,7 @@ interface ResponseFactory
      * @param int $status Integer status code for the redirect; 302 by default.
      * @param array $headers Array of headers to use at initialization.
      */
-    public function redirect($uri, int $status = 302, array $headers = []): ResponseInterface;
+    public function redirect(string|UriInterface $uri, int $status = 302, array $headers = []): ResponseInterface;
 
     /**
      * Create a JSON response with the given data.
@@ -55,7 +55,7 @@ interface ResponseFactory
      * @throws InvalidArgumentException if unable to encode the $data to JSON.
      */
     public function json(
-        $data,
+        mixed $data,
         int $status = 200,
         array $headers = [],
         int $encodingOptions = self::DEFAULT_JSON_FLAGS
@@ -80,5 +80,5 @@ interface ResponseFactory
      * @param array $headers Array of headers to use at initialization.
      * @throws InvalidArgumentException if $html is neither a string or stream.
      */
-    public function html($html, int $status = 200, array $headers = []): ResponseInterface;
+    public function html(string|StreamInterface $html, int $status = 200, array $headers = []): ResponseInterface;
 }
