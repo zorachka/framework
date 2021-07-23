@@ -23,7 +23,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [
@@ -33,7 +33,7 @@ final class Config
         return $self;
     }
 
-    public function url(string $url): self
+    public function withUrl(string $url): self
     {
         $new = clone $this;
         $new->config['url'] = $url;

@@ -17,7 +17,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [
@@ -29,7 +29,7 @@ final class Config
         return $self;
     }
 
-    public function templatesDir(string $templatesDir): self
+    public function withTemplatesDir(string $templatesDir): self
     {
         $new = clone $this;
         $new->config['templates_dir'] = $templatesDir;
@@ -37,7 +37,7 @@ final class Config
         return $new;
     }
 
-    public function cacheDir(string $cacheDir): self
+    public function withCacheDir(string $cacheDir): self
     {
         $new = clone $this;
         $new->config['cache_dir'] = $cacheDir;
@@ -45,7 +45,7 @@ final class Config
         return $new;
     }
 
-    public function debug(bool $isEnabled): self
+    public function withDebug(bool $isEnabled): self
     {
         $new = clone $this;
         $new->config['debug'] = $isEnabled;

@@ -21,7 +21,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [
@@ -31,7 +31,7 @@ final class Config
         return $self;
     }
 
-    public function addExtension(string $extension): self
+    public function withExtension(string $extension): self
     {
         $new = clone $this;
         $new->config['extensions'][] = $extension;
