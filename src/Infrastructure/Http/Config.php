@@ -17,7 +17,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [
@@ -27,7 +27,7 @@ final class Config
         return $self;
     }
 
-    public function rootPath(string $rootPath): self
+    public function withRootPath(string $rootPath): self
     {
         $new = clone $this;
         $new->config['root_path'] = $rootPath;
