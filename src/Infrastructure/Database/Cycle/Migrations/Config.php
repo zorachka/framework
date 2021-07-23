@@ -26,7 +26,7 @@ final class Config
                 'console' => [
                     'commands' => [
                         CreateCommand::class,
-                        GenerateCommand::class,
+//                        GenerateCommand::class,
                         ListCommand::class,
                         UpCommand::class,
                         DownCommand::class,
@@ -36,7 +36,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [
