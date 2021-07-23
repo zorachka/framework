@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Clock;
 
-use DateTimeImmutable;
 use DateTimeZone;
-use Zorachka\Application\Clock\Clock;
+use DateTimeImmutable;
+use Zorachka\Application\Clock\ClockInterface;
 
-final class UTCClock implements Clock
+final class UTCClock implements ClockInterface
 {
     private TimeZoneAwareClock $inner;
 

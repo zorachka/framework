@@ -6,17 +6,17 @@ namespace Zorachka\Infrastructure\Clock;
 
 use DateTimeZone;
 use Psr\Container\ContainerInterface;
-use Zorachka\Application\Clock\Clock;
+use Zorachka\Application\Clock\ClockInterface;
 
 final class ConfigProvider
 {
     public function __invoke(): array
     {
-        $config = Config::defaults();
+        $config = Config::withDefaults();
         $defaults = $config();
 
         return [
-            Clock::class => static function (ContainerInterface $container) {
+            ClockInterface::class => static function (ContainerInterface $container) {
                 $config = $container->has('config') ? $container->get('config') : [];
                 $clock = $config['clock'] ?? [];
 

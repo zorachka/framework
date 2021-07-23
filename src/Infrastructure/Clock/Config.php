@@ -24,7 +24,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [
@@ -34,7 +34,7 @@ final class Config
         return $self;
     }
 
-    public function timezone(string $timezone): self
+    public function withTimezone(string $timezone): self
     {
         Assert::inArray($timezone, DateTimeZone::listIdentifiers(DateTimeZone::ALL));
         $new = clone $this;

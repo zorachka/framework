@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Clock;
 
-use DateTimeImmutable;
-use DateTimeZone;
 use Exception;
-use Zorachka\Application\Clock\Clock;
+use DateTimeZone;
+use DateTimeImmutable;
+use Zorachka\Application\Clock\ClockInterface;
 
-final class TimeZoneAwareClock implements Clock
+final class TimeZoneAwareClock implements ClockInterface
 {
     private DateTimeZone $timezone;
 
