@@ -9,6 +9,7 @@ use Onliner\CommandBus\Remote\AMQP\AMQPConsumer;
 use Onliner\CommandBus\Remote\AMQP\Queue;
 use Onliner\CommandBus\Remote\RemoteExtension;
 use Onliner\CommandBus\Retry\Policy\ThrowPolicy;
+use ReflectionClass;
 use Zorachka\Application\CommandBus\AsyncCommand;
 use Zorachka\Infrastructure\CommandBus\Onliner\Console\ConsumeCommand;
 
@@ -92,12 +93,17 @@ final class Config
         return $self;
     }
 
+    /**
+     * @throws \ReflectionException
+     */
     public function addHandler(string $commandClassName, string $handlerClassName): self
     {
         $new = clone $this;
         $new->config['handlers_map'][$commandClassName] = $handlerClassName;
 
-        $isAsyncCommand = new $commandClassName instanceof AsyncCommand;
+        $reflection = new ReflectionClass($commandClassName);
+        $isAsyncCommand = $reflection->implementsInterface(AsyncCommand::class);
+
         if (!$isAsyncCommand) {
             $new->config['remote']['local'][] = $commandClassName;
         }

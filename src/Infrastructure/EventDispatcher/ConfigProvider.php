@@ -8,7 +8,6 @@ use League\Event\PrioritizedListenerRegistry;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use League\Event\EventDispatcher;
-use Zorachka\Infrastructure\Database\Migrations\Config;
 
 final class ConfigProvider
 {

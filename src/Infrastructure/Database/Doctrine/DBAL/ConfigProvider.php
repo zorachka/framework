@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Database\DoctrineDBAL;
+namespace Zorachka\Infrastructure\Database\Doctrine\DBAL;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Psr\Container\ContainerInterface;
 use Zorachka\Application\Database\Transaction\Transaction;
-use Zorachka\Infrastructure\Database\DoctrineDBAL\Transaction\DBALTransaction;
 
 final class ConfigProvider
 {
@@ -30,7 +29,7 @@ final class ConfigProvider
                 /** @var Connection $connection */
                 $connection = $container->get(Connection::class);
 
-                return new DBALTransaction($connection);
+                return new DoctrineTransaction($connection);
             },
 
             'config' => $defaults['config'],

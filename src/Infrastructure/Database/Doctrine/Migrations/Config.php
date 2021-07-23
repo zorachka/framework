@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Database\Migrations;
+namespace Zorachka\Infrastructure\Database\Doctrine\Migrations;
 
-use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations;
 
 final class Config
@@ -66,10 +65,10 @@ final class Config
         return $new;
     }
 
-    public function addSchema(Schema $schema): self
+    public function addSchema(string $schemaClassName): self
     {
         $new = clone $this;
-        $new->config['schemas'][] = $schema;
+        $new->config['schemas'][] = $schemaClassName;
 
         return $new;
     }

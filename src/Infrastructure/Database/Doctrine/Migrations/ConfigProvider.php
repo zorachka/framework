@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Database\Migrations;
+namespace Zorachka\Infrastructure\Database\Doctrine\Migrations;
 
 use Psr\Container\ContainerInterface;
 use Doctrine\DBAL\Connection;
@@ -11,7 +11,7 @@ use Doctrine\Migrations\Configuration\Configuration;
 use Doctrine\Migrations\DependencyFactory;
 use Doctrine\Migrations\Tools\Console\Command;
 use Doctrine\Migrations\Provider\SchemaProvider;
-use Zorachka\Infrastructure\Database\Migrations\Schema\AggregateSchemaProvider;
+use Zorachka\Infrastructure\Database\Doctrine\Migrations\Schema\AggregateSchemaProvider;
 
 final class ConfigProvider
 {
@@ -59,7 +59,7 @@ final class ConfigProvider
 
                 return $factory;
             },
-            // Commands
+            // Command
             Command\ExecuteCommand::class => static function (ContainerInterface $container) {
                 /** @var DependencyFactory $factory */
                 $factory = $container->get(DependencyFactory::class);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Database\Migrations\Schema;
+namespace Zorachka\Infrastructure\Database\Doctrine\Migrations\Schema;
 
 use Doctrine\DBAL\Schema\Schema;
 

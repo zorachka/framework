@@ -35,7 +35,7 @@ final class TransactionMiddleware implements Middleware
             $next($message, $context);
 
             $this->transaction->commit();
-            $this->logger->debug('Transaction completed');
+            $this->logger->debug('CycleTransaction completed');
         } catch (Exception $exception) {
             $this->transaction->rollBack();
 

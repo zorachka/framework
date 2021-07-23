@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Database\DoctrineDBAL\Transaction;
+namespace Zorachka\Infrastructure\Database\Doctrine\DBAL;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\ConnectionException;
 use Doctrine\DBAL\Exception;
 use Zorachka\Application\Database\Transaction\Transaction;
 
-final class DBALTransaction implements Transaction
+final class DoctrineTransaction implements Transaction
 {
     private Connection $connection;
 

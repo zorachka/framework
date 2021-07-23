@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Database\DoctrineDBAL;
+namespace Zorachka\Infrastructure\Database\Doctrine\DBAL;
 
 use Zorachka\Application\Support\Env;
 
