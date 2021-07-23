@@ -14,7 +14,7 @@ final class Config
     {
     }
 
-    public function __invoke(): array
+    public function build(): array
     {
         return [
             'config' => [
@@ -23,7 +23,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [

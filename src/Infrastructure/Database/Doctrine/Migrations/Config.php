@@ -14,7 +14,7 @@ final class Config
     {
     }
 
-    public function __invoke(): array
+    public function build(): array
     {
         return [
             'config' => [
@@ -28,7 +28,6 @@ final class Config
                         Migrations\Tools\Console\Command\StatusCommand::class,
                         Migrations\Tools\Console\Command\UpToDateCommand::class,
                         Migrations\Tools\Console\Command\DiffCommand::class,
-//                Migrations\Tools\Console\Command\GenerateCommand::class,
                     ],
                 ],
             ],

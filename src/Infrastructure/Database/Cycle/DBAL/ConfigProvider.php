@@ -13,7 +13,7 @@ final class ConfigProvider
     public function __invoke(): array
     {
         $defaultConfig = Config::withDefaults();
-        $defaults = $defaultConfig();
+        $defaults = $defaultConfig->build();
 
         return [
             Transaction::class => static function (ContainerInterface $container) {

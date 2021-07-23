@@ -15,8 +15,8 @@ final class ConfigProvider
 {
     public function __invoke(): array
     {
-        $config = Config::withDefaults();
-        $defaults = $config();
+        $defaultConfig = Config::withDefaults();
+        $defaults = $defaultConfig->build();
 
         return [
             Router::class => static function (ContainerInterface $container) {

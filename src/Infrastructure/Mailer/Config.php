@@ -14,7 +14,7 @@ final class Config
     {
     }
 
-    public function __invoke(): array
+    public function build(): array
     {
         return [
             'config' => [

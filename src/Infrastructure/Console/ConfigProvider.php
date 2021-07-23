@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace Zorachka\Infrastructure\Console;
 
 use Psr\Container\ContainerInterface;
+use Zorachka\Infrastructure\Console\Command\ClearCacheCommand;
 
 final class ConfigProvider
 {
     public function __invoke(): array
     {
-        $defaultConfig = Config::withDefaults();
-        $defaults = $defaultConfig();
+        $defaultConfig = Config::withDefaults()
+            ->withCommand(ClearCacheCommand::class);
+        $defaults = $defaultConfig->build();
 
         return [
             Application::class => static function (ContainerInterface $container) {

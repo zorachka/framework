@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\CommandBus\Onliner;
 
+use Onliner\CommandBus\Middleware\LoggerMiddleware;
 use Psr\Container\ContainerInterface;
 use Onliner\CommandBus\Builder;
 use Onliner\CommandBus\Dispatcher;
@@ -20,8 +21,11 @@ final class ConfigProvider
 {
     public function __invoke(): array
     {
-        $defaultConfig = Config::withDefaults();
-        $defaults = $defaultConfig();
+        $defaultConfig = Config::withDefaults()
+            ->withExtension(RemoteExtension::class)
+            ->withMiddleware(LoggerMiddleware::class);
+
+        $defaults = $defaultConfig->build();
 
         return [
             Serializer::class => static function (ContainerInterface $container) {

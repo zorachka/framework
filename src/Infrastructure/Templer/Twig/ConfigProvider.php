@@ -15,7 +15,7 @@ final class ConfigProvider
     public function __invoke(): array
     {
         $defaultConfig = Config::withDefaults();
-        $defaults = $defaultConfig();
+        $defaults = $defaultConfig->build();
 
         return [
             Environment::class => function (ContainerInterface $container): Environment {

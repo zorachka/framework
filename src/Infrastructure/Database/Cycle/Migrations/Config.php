@@ -6,7 +6,6 @@ namespace Zorachka\Infrastructure\Database\Cycle\Migrations;
 
 use Zorachka\Infrastructure\Database\Cycle\Migrations\Console\Migration\CreateCommand;
 use Zorachka\Infrastructure\Database\Cycle\Migrations\Console\Migration\DownCommand;
-use Zorachka\Infrastructure\Database\Cycle\Migrations\Console\Migration\GenerateCommand;
 use Zorachka\Infrastructure\Database\Cycle\Migrations\Console\Migration\ListCommand;
 use Zorachka\Infrastructure\Database\Cycle\Migrations\Console\Migration\UpCommand;
 
@@ -18,7 +17,7 @@ final class Config
     {
     }
 
-    public function __invoke(): array
+    public function build(): array
     {
         return [
             'config' => [
@@ -26,7 +25,6 @@ final class Config
                 'console' => [
                     'commands' => [
                         CreateCommand::class,
-//                        GenerateCommand::class,
                         ListCommand::class,
                         UpCommand::class,
                         DownCommand::class,

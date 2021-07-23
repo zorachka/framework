@@ -14,7 +14,7 @@ final class ConfigProvider
     public function __invoke(): array
     {
         $defaultConfig = Config::defaults();
-        $defaults = $defaultConfig();
+        $defaults = $defaultConfig->build();
 
         return [
             EventDispatcher::class => static function (ContainerInterface $container) {

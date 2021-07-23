@@ -12,7 +12,7 @@ final class ConfigProvider
     public function __invoke(): array
     {
         $defaultConfig = Config::withDefaults();
-        $defaults = $defaultConfig();
+        $defaults = $defaultConfig->build();
 
         return [
             QueryBus::class => static function (ContainerInterface $container) {

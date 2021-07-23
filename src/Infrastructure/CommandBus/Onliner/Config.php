@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace Zorachka\Infrastructure\CommandBus\Onliner;
 
 use ReflectionClass;
-use Onliner\CommandBus\Middleware\LoggerMiddleware;
 use Onliner\CommandBus\Remote\AMQP\AMQPConsumer;
 use Onliner\CommandBus\Remote\AMQP\Queue;
-use Onliner\CommandBus\Remote\RemoteExtension;
 use Onliner\CommandBus\Retry\Policy\ThrowPolicy;
 use Zorachka\Application\CommandBus\AsyncCommand;
 use Zorachka\Infrastructure\CommandBus\Onliner\Console\ConsumeCommand;
@@ -21,7 +19,7 @@ final class Config
     {
     }
 
-    public function __invoke(): array
+    public function build(): array
     {
         return [
             'config' => [
@@ -83,10 +81,9 @@ final class Config
             ],
             'extensions' => [
                 // CustomExtension::class,
-                RemoteExtension::class,
             ],
             'middlewares' => [
-                LoggerMiddleware::class,
+                /// CustomMiddleware::class,
             ],
         ];
 

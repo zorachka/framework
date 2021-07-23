@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Zorachka\Infrastructure\Console;
 
-use Zorachka\Infrastructure\Console\Command\ClearCacheCommand;
-
 final class Config
 {
     private array $config;
@@ -14,7 +12,7 @@ final class Config
     {
     }
 
-    public function __invoke(): array
+    public function build(): array
     {
         return [
             'config' => [
@@ -29,9 +27,7 @@ final class Config
         $self->config = [
             'app_name' => 'Console App',
             'catch_exceptions' => false,
-            'commands' => [
-                ClearCacheCommand::class,
-            ],
+            'commands' => [],
         ];
 
         return $self;

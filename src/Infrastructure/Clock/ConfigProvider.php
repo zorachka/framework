@@ -13,7 +13,7 @@ final class ConfigProvider
     public function __invoke(): array
     {
         $config = Config::withDefaults();
-        $defaults = $config();
+        $defaults = $config->build();
 
         return [
             ClockInterface::class => static function (ContainerInterface $container) {
