@@ -21,7 +21,7 @@ final class ConfigProvider
 {
     public function __invoke(): array
     {
-        $defaultConfig = Config::defaults();
+        $defaultConfig = Config::withDefaults();
         $defaults = $defaultConfig();
 
         return [
