@@ -23,7 +23,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [
@@ -37,7 +37,7 @@ final class Config
         return $self;
     }
 
-    public function appName(string $appName): self
+    public function withAppName(string $appName): self
     {
         $new = clone $this;
         $new->config['app_name'] = $appName;
@@ -45,7 +45,7 @@ final class Config
         return $new;
     }
 
-    public function catchExceptions(bool $isEnabled): self
+    public function withCatchExceptions(bool $isEnabled): self
     {
         $new = clone $this;
         $new->config['catch_exceptions'] = $isEnabled;
@@ -57,7 +57,7 @@ final class Config
      * @param string $command Class name
      * @return $this
      */
-    public function addCommand(string $command): self
+    public function withCommand(string $command): self
     {
         $new = clone $this;
         $new->config['commands'][] = $command;

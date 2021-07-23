@@ -7,7 +7,7 @@ namespace Zorachka\Infrastructure\Console;
 interface Application
 {
     /**
-     * Run console ConsoleApplication.
+     * Run console Application.
      */
     public function run(): void;
 }
