@@ -23,7 +23,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [
@@ -39,7 +39,7 @@ final class Config
         return $self;
     }
 
-    public function host(string $host): self
+    public function withHost(string $host): self
     {
         $new = clone $this;
         $new->config['host'] = $host;
@@ -47,7 +47,7 @@ final class Config
         return $new;
     }
 
-    public function port(string $host): self
+    public function withPort(string $host): self
     {
         $new = clone $this;
         $new->config['port'] = $host;
@@ -55,7 +55,7 @@ final class Config
         return $new;
     }
 
-    public function user(string $user): self
+    public function withUser(string $user): self
     {
         $new = clone $this;
         $new->config['user'] = $user;
@@ -63,7 +63,7 @@ final class Config
         return $new;
     }
 
-    public function password(string $password): self
+    public function withPassword(string $password): self
     {
         $new = clone $this;
         $new->config['password'] = $password;
@@ -71,7 +71,7 @@ final class Config
         return $new;
     }
 
-    public function encryption(string $encryption): self
+    public function withEncryption(string $encryption): self
     {
         $new = clone $this;
         $new->config['encryption'] = $encryption;
@@ -79,7 +79,7 @@ final class Config
         return $new;
     }
 
-    public function fromName(string $fromName): self
+    public function withFromName(string $fromName): self
     {
         $new = clone $this;
         $new->config['from_name'] = $fromName;
@@ -87,7 +87,7 @@ final class Config
         return $new;
     }
 
-    public function fromEmail(string $fromEmail): self
+    public function withFromEmail(string $fromEmail): self
     {
         $new = clone $this;
         $new->config['from_email'] = $fromEmail;

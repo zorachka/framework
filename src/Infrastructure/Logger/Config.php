@@ -23,7 +23,7 @@ final class Config
         ];
     }
 
-    public static function defaults(): self
+    public static function withDefaults(): self
     {
         $self = new self();
         $self->config = [
@@ -36,7 +36,7 @@ final class Config
         return $self;
     }
 
-    public function name(string $name): self
+    public function withName(string $name): self
     {
         $new = clone $this;
         $new->config['name'] = $name;
@@ -44,7 +44,7 @@ final class Config
         return $new;
     }
 
-    public function debug(bool $isEnabled): self
+    public function withDebug(bool $isEnabled): self
     {
         $new = clone $this;
         $new->config['debug'] = $isEnabled;
@@ -52,7 +52,7 @@ final class Config
         return $new;
     }
 
-    public function file(string $file): self
+    public function withFile(string $file): self
     {
         $new = clone $this;
         $new->config['file'] = $file;
@@ -60,7 +60,7 @@ final class Config
         return $new;
     }
 
-    public function stderr(bool $isEnabled): self
+    public function withStderr(bool $isEnabled): self
     {
         $new = clone $this;
         $new->config['stderr'] = $isEnabled;
