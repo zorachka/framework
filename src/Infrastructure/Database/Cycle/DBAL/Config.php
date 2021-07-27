@@ -47,16 +47,20 @@ final class Config
         return $self;
     }
 
-    public function addDatabase(string $name): self
-    {
+    public function addDatabase(
+        string $host,
+        string $name,
+        string $username,
+        string $password,
+    ): self {
         $new = clone $this;
         $new->config['databases'][$name] = ['connection' => $name];
         $new->config['connections'][$name] = [
             'driver' => Driver\Postgres\PostgresDriver::class,
             'options' => [
-                'connection' => 'pgsql:host=' . Env::get('DB_HOST') . ';dbname=' . $name,
-                'username' => Env::get('DB_USERNAME'),
-                'password' => Env::get('DB_PASSWORD'),
+                'connection' => 'pgsql:host=' . $host . ';dbname=' . $name,
+                'username' => $username,
+                'password' => $password,
             ]
         ];
 
