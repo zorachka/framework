@@ -18,7 +18,7 @@ final class ZorachkaQueryBus implements QueryBus
     /**
      * @inheritDoc
      */
-    public function fetch(object $query): object
+    public function fetch(object $query): object|array|null
     {
         $fetcher = $this->registry->getFetcherForQuery(\get_class($query));
 

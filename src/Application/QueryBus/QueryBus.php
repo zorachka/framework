@@ -9,7 +9,7 @@ interface QueryBus
     /**
      * Fetch query.
      * @param object $query
-     * @return object
+     * @return object|object[]|null
      */
-    public function fetch(object $query): object;
+    public function fetch(object $query): object|array|null;
 }
