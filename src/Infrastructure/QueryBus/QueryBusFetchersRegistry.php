@@ -6,7 +6,7 @@ namespace Zorachka\Infrastructure\QueryBus;
 
 final class QueryBusFetchersRegistry implements FetchersRegistry
 {
-    private array $handlersMap;
+    private array $handlersMap = [];
 
     public function setupFetcherForQuery(string $queryClassName, callable $fetcher): void
     {
