@@ -35,9 +35,9 @@ final class Config
 
     public function withFetcherFor(string $queryClassName, string $fetcherClassName): self
     {
-        $self = new self();
-        $self->config['fetchers_map'][$queryClassName] = $fetcherClassName;
+        $new = clone $this;
+        $new->config['fetchers_map'][$queryClassName] = $fetcherClassName;
 
-        return $self;
+        return $new;
     }
 }
