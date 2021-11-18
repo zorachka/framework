@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Console;
+namespace Zorachka\Framework\Console;
 
 interface Application
 {
     /**
-     * Run console Application.
+     * Run application.
      */
     public function run(): void;
 }

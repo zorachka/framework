@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Console;
+namespace Zorachka\Framework\Console;
 
 use Exception;
 use Symfony\Component\Console\Application as SymfonyConsoleApplication;
@@ -21,13 +21,11 @@ final class ConsoleApplication implements Application
     public function __construct(
         string $appName,
         bool $catchExceptions,
-        array $commands
+        array $commands = []
     ) {
         $this->cli = new SymfonyConsoleApplication($appName);
 
-        if ($catchExceptions) {
-            $this->cli->setCatchExceptions(false);
-        }
+        $this->cli->setCatchExceptions($catchExceptions);
 
         if ($commands) {
             foreach ($commands as $command) {
