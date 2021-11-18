@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Application\Http;
+namespace Zorachka\Framework\Http\Response;
 
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;

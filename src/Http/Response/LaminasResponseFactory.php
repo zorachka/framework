@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Zorachka\Infrastructure\Http;
+namespace Zorachka\Framework\Http\Response;
 
 use Laminas\Diactoros\Response\EmptyResponse;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\JsonResponse;
 use Laminas\Diactoros\Response\RedirectResponse;
 use Psr\Http\Message\ResponseInterface;
-use Zorachka\Application\Http\ResponseFactory;
 
 final class LaminasResponseFactory implements ResponseFactory
 {
