@@ -30,7 +30,7 @@ But it's better to use application skeleton (coming soon).
 ## Testing
 
 ```bash
-composer test
+make test
 ```
 
 ## Changelog

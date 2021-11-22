@@ -1,6 +1,6 @@
 {
     "name": "zorachka/framework",
-    "description": "This is my package Application",
+    "description": "Zorachka Framework",
     "keywords": [
         "zorachka",
         "framework"
@@ -16,46 +16,25 @@
     ],
     "require": {
         "php": "^8.0",
-        "ext-json": "*",
-        "ext-pcntl": "*",
-        "cycle/migrations": "^1.0",
-        "doctrine/migrations": "^3.1",
-        "doctrine/sql-formatter": "^1.1",
-        "finesse/swiftmailer-defaults-plugin": "^2.0",
-        "laminas/laminas-diactoros": "^2.6",
-        "laminas/laminas-httphandlerrunner": "^1.4",
-        "league/event": "^3.0",
-        "league/flysystem": "^2.1",
-        "league/route": "^5.0",
-        "league/tactician": "^1.1",
-        "league/tactician-doctrine": "^1.1",
-        "mezzio/mezzio-helpers": "^5.6",
-        "monolog/monolog": "^2.2",
-        "onliner/command-bus": "^0.2.4",
-        "ramsey/uuid": "^4.1",
-        "sentry/sdk": "^3.1",
-        "spiral/database": "^2.8",
-        "spiral/migrations": "^2.2",
-        "swiftmailer/swiftmailer": "^6.2",
-        "symfony/console": "^5.3",
-        "twig/twig": "^3.3",
-        "vlucas/phpdotenv": "^5.3",
-        "webmozart/assert": "^1.10"
+        "zorachka/console": "^1.0",
+        "zorachka/container": "^2.0",
+        "zorachka/directories": "dev-main",
+        "zorachka/environment": "dev-main",
+        "zorachka/error-handler": "dev-main",
+        "zorachka/http": "dev-main",
+        "zorachka/logger": "dev-main"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.17",
-        "phpunit/phpunit": "^9.5",
-        "roave/security-advisories": "dev-latest",
-        "vimeo/psalm": "^4.3"
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
-            "Zorachka\\": "src/"
+            "Zorachka\\Framework\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Zorachka\\Tests\\": "tests"
+            "Zorachka\\Framework\\Tests\\": "tests"
         }
     },
     "config": {
